@@ -1,14 +1,10 @@
 import React from 'react';
-import { useParams, NavLink, useRouteMatch, useHistory} from 'react-router-dom'
+import { useParams, useRouteMatch, useHistory} from 'react-router-dom'
 
 export default function MovieList(props) {
   const { url } = useRouteMatch();
   const { id } = useParams();
   console.log(url)
-
-  // const movie = props.movies.find((movie) => {
-  //   return movie.id == id;
-  // }) || {};
 
   return (
     <div className="movie-list">
@@ -28,7 +24,6 @@ function MovieDetails(props) {
 
   function handleClick() {
     history.push(`/movies/${id}`)
-    // console.log(id)
   }
 
   return (
