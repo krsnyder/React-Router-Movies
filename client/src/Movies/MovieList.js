@@ -1,9 +1,10 @@
 import React from 'react';
-import { useParams, NavLink, useRouteMatch, Link} from 'react-router-dom'
+import { useParams, NavLink, useRouteMatch, useHistory} from 'react-router-dom'
 
 export default function MovieList(props) {
   const { url } = useRouteMatch();
   const { id } = useParams();
+  console.log(url)
 
   // const movie = props.movies.find((movie) => {
   //   return movie.id == id;
@@ -13,9 +14,7 @@ export default function MovieList(props) {
     <div className="movie-list">
       {props.movies.map(movie => (
         <div key={movie.id}>
-          <Link to={`${url}${movie.id}`}>
-            <MovieDetails key={movie.id} movie={movie} />
-          </Link>
+          <MovieDetails key={movie.id} movie={movie} />
         </div>
       ))}
     </div>
@@ -23,10 +22,17 @@ export default function MovieList(props) {
 }
 
 function MovieDetails(props) {
-  const { title, director, metascore } = props.movie;
+  const { title, director, metascore, id } = props.movie;
+
+  let history = useHistory();
+
+  function handleClick() {
+    history.push(`/movies/${id}`)
+    // console.log(id)
+  }
 
   return (
-    <div className="movie-card">
+    <div className="movie-card" onClick={handleClick}>
       <h2>{title}</h2>
       <div className="movie-director">
         Director: <em>{director}</em>
