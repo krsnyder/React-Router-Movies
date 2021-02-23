@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, useRouteMatch} from 'react-router-dom'
+import { useParams} from 'react-router-dom'
 
 export default function Movie(props) {
   const {addToSaved} = props
   const [movie, setMovie] = useState();
 
   let { id } = useParams();
-  const { url } = useRouteMatch();
+  // const { url } = useRouteMatch();
 
   useEffect(() => {
     axios

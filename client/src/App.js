@@ -7,6 +7,8 @@ import SavedList from './Movies/SavedList';
 import MovieList from './Movies/MovieList';
 import Movie from './Movies/Movie'
 
+let ids = []
+
 export default function App () {
   const [saved, setSaved] = useState([]); // Stretch: the ids of "saved" movies
   const [movieList, setMovieList] = useState([]);
@@ -26,18 +28,23 @@ export default function App () {
     getMovies();
   }, []);
 
-  let ids = []
   
   const addToSavedList = id => {
-    if (ids.includes(id) !== true) {
+    if (ids.includes(id) === false) {
       setSaved([...saved, movieList.find(movie => movie["id"] == id)])
+      console.log(typeof id)
+      console.log(ids.includes(id))
+      ids.push(id)
+      console.log(ids)
     }
     
-    for (let i = 0; i < saved.length; i++) {
-      if (i.hasOwnProperty(id) !== true) {
-        ids.push(id)
-      }
-    }
+    // for (let i = 0; i < saved.length; i++) {
+    //   if (i.hasOwnProperty(id) !== true) {
+    //     ids.push(id)
+    //   }
+    // }
+
+    
 
   };
 

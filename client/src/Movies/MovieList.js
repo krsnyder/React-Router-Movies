@@ -1,9 +1,9 @@
 import React from 'react';
-import { useParams, useRouteMatch, useHistory} from 'react-router-dom'
+import { useRouteMatch, useHistory} from 'react-router-dom'
 
 export default function MovieList(props) {
   const { url } = useRouteMatch();
-  const { id } = useParams();
+  // const { id } = useParams();
   console.log(url)
 
   return (
